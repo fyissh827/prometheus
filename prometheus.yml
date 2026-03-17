@@ -7,17 +7,10 @@ scrape_configs:
       - targets: ["localhost:9090"]
 
   - job_name: "fyish_api"
-    scheme: https
     static_configs:
-      - targets: ["api.fyish.com"]
+      - targets: ["centrals:3000"]
 
-  - job_name: "mariadb"
-    static_configs:
-      - targets: ["mysqld_exporter:9104"]
-
-  - job_name: "redis"
-    static_configs:
-      - targets: ["127.0.0.1:9121"]  
+    
 
 rule_files:
   - "rules.yml"

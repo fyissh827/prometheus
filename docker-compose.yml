@@ -1,7 +1,5 @@
-version: "3.9"
-
 networks:
-  monitoring:
+  app_net:
     external: true
 
 services:
@@ -10,7 +8,7 @@ services:
     container_name: prometheus
     restart: always
     networks:
-      - monitoring
+      - app_net
     ports:
       - "9090:9090"
     volumes:
@@ -24,7 +22,7 @@ services:
     container_name: alertmanager
     restart: always
     networks:
-      - monitoring
+      - app_net
     ports:
       - "9093:9093"
     volumes:

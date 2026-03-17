@@ -1,0 +1,12 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'alertfyish@gmail.com'
+  smtp_auth_username: 'alertfyish@gmail.com'
+  smtp_auth_password: 'eumd xhyz xgvt ydtm'   # read from environment
+route:
+  receiver: 'email-alert'
+
+receivers:
+  - name: 'email-alert'
+    email_configs:
+      - to: 'hr09351@gmail.com'

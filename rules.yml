@@ -1,0 +1,20 @@
+groups:
+  - name: fyish_api_alerts
+    rules:
+      - alert: FyishApiDown
+        expr: up{job="fyish_api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Fyish API is down"
+          description: "The fyish_api at {{ $labels.instance }} has been down for more than 1 minute."
+
+      - alert: FyishApiHighRequestRate
+        expr: rate(http_requests_total{job="fyish_api"}[1m]) > 1000
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request rate on Fyish API"
+          description: "The fyish_api at {{ $labels.instance }} is receiving more than 1000 requests per minute."
